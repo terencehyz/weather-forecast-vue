@@ -3,6 +3,18 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import MuseUI from 'muse-ui'
+import axios from 'axios'
+import 'muse-ui/dist/muse-ui.css'
+import 'typeface-roboto'
+
+var $http = axios.create({
+
+});
+
+Vue.prototype.$http = $http;
+
+Vue.use(MuseUI)
 
 Vue.config.productionTip = false
 

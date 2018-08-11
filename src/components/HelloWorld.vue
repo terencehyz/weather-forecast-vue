@@ -1,85 +1,18 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <div class="icon-container">
+      <mu-icon value="home"></mu-icon>
+      <mu-icon value="flight_takeoff" color="red"></mu-icon>
+      <mu-icon value="cloud_download" color="orange"></mu-icon>
+      <mu-icon value="info" color="blue"></mu-icon>
+    </div>
+    <div>
+      <mu-button class="demo-color-btn" color="primary"> primary </mu-button>
+      <mu-button class="demo-color-btn" color="success"> success </mu-button>
+      <mu-button class="demo-color-btn" color="indigo400"> indigo400 </mu-button>
+      <mu-button class="demo-color-btn" color="#1565c0"> Custom </mu-button>
+    </div>
   </div>
 </template>
 
@@ -109,5 +42,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.demo-color-btn {
+  margin: 8px;
 }
 </style>

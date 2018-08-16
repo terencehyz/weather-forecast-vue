@@ -13,6 +13,9 @@ export default {
 </script>
 
 <style>
+  #app{
+    font-family: SourceHanSansCN-Normal;
+  }
   main {
     width: 100%;
     height: 100%;

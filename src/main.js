@@ -7,6 +7,7 @@ import MuseUI from 'muse-ui'
 import axios from 'axios'
 import 'muse-ui/dist/muse-ui.css'
 import 'typeface-roboto'
+import './styles/index.less'
 
 var $http = axios.create({
 

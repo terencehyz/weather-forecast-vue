@@ -1,8 +1,6 @@
 <template>
   <div>
-    {{info.bookname}}+{{info.introduction}}+{{info.bid}}
-    <hr>
-    <br>
+
   </div>
 </template>
 

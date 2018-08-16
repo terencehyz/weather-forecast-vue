@@ -1,7 +1,7 @@
 <template>
   <div class="myPic">
     <h3>Sun Dial</h3>
-    <svg width="200" height="100" viewbox="0 0 100 45" xmlns="http://www.w3.org/2000/svg">
+    <svg  width="200" height="100" viewbox="0 0 100 45" xmlns="http://www.w3.org/2000/svg">
       <path id="sunPath" d="M10 30 C 30 5, 70 5, 90 30" stroke="rgba(0,0,0,0.5)" fill="transparent" />
       <g id="sunEl" style="transform: translate(10px, 30px);">
         <circle r="5" />

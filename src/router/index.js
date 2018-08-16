@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+import HelloWorld from '@/components/HelloWorld'
 
 import WindCondition from '@/components/WindCondition'
 import AirCondition from '@/components/AirCondition'
-import LifeData from '@/components/LifeData'
+import SunDial from '@/components/SunDial'
 
 Vue.use(Router)
 
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'HelloWorld',
+      component: HelloWorld
     },
     {
       path: '/AirCondition',
@@ -27,7 +27,7 @@ export default new Router({
     },
     {
       path:'/test',
-      component:LifeData
+      component:SunDial
     }
   ]
 })

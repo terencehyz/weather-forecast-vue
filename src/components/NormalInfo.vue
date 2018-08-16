@@ -2,13 +2,14 @@
   <div>
     <section class="sectionA">
       <div class="air-quality" @click="navToAirCondition()">
-        <img src="../assets/icons/quality.svg" alt="air quality"><span class="air__value">{{ air }}</span>&percnt;
+        <img src="../assets/icons/quality.svg" alt="air quality"><span class="air__value normalText">{{ air }}</span>
       </div>
       <div class="wind-speed" @click="navToWindCondition()">
-        <img src="../assets/icons/wind.svg" alt="wind speed"><span class="wind__value">{{ windSpeed }}</span>m/s
+        <img src="../assets/icons/wind.svg" alt="wind speed"><span
+        class="wind__value normalText">{{ windSpeed }}m/s</span>
       </div>
       <div class="humidity">
-        <img src="../assets/icons/humidity.svg" alt="humidity"><span class="humidity__value">{{ humidity }}</span>&percnt;
+        <img src="../assets/icons/humidity.svg" alt="humidity"><span class="humidity__value normalText">{{ humidity }}&percnt;</span>
       </div>
     </section>
     <section class="sectionB">
@@ -24,78 +25,85 @@
 </template>
 
 <script>
-    export default {
-      name: "NormalInfo",
+  export default {
+    name: "NormalInfo",
 
-      data: function(){
-        return{
-          scale: 'Celcius'
-        }
+    data: function () {
+      return {
+        scale: 'Celcius'
+      }
+    },
+
+    computed: {
+      scaleSymbol() {
+        return this.scale.charAt(0);
       },
 
-      computed: {
-        scaleSymbol() {
-          return this.scale.charAt(0);
-        },
+      fValue() {
+        return this.toFahrenheit(this.value);
+      }
+    },
 
-        fValue() {
-          return this.toFahrenheit(this.value);
-        }
+    methods: {
+      toFahrenheit(value) {
+        return Math.floor((value * 1.8) + 32);
       },
 
-      methods: {
-        toFahrenheit(value) {
-          return Math.floor((value * 1.8) + 32);
-        },
-
-        toggleTemperature() {
-          (this.scale === 'Celcius')? this.scale = 'Fahrenheit' : this.scale = 'Celcius';
-        },
-
-        navToAirCondition() {
-          this.$router.push({
-            path: '/AirCondition',
-            name: 'AirCondition',
-            params: {
-              name:"ceshi111"
-            }
-          })
-        },
-
-        navToWindCondition() {
-          this.$router.push({
-            path: '/WindCondition',
-            name: 'WindCondition',
-            params: {
-              name:"ceshi111"
-            }
-          })
-        }
+      toggleTemperature() {
+        (this.scale === 'Celcius') ? this.scale = 'Fahrenheit' : this.scale = 'Celcius';
       },
 
-      props: {
-        value: {
-          required: true
-        },
-        air: {
-          required: true
-        },
-        windSpeed: {
-          required: true
-        },
-        humidity: {
-          required: true
-        }
+      navToAirCondition() {
+        this.$router.push({
+          path: '/AirCondition',
+          name: 'AirCondition',
+          params: {
+            name: "ceshi111"
+          }
+        })
+      },
+
+      navToWindCondition() {
+        this.$router.push({
+          path: '/WindCondition',
+          name: 'WindCondition',
+          params: {
+            name: "ceshi111"
+          }
+        })
+      }
+    },
+
+    props: {
+      value: {
+        required: true
+      },
+      air: {
+        required: true
+      },
+      windSpeed: {
+        required: true
+      },
+      humidity: {
+        required: true
       }
     }
+  }
 </script>
 
 <style scoped>
+  .normalText {
+    font-size: 18px;
+    line-height: 48px;
+  }
+
   .sectionB {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
   }
+
   .sectionA {
     width: 100%;
     padding-top: 25px;
@@ -103,6 +111,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .air-quality img {

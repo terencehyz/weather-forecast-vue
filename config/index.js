@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/apis': {    //将www.exaple.com印射为/apis
-        target: 'http://10.25.17.93:8080',  // 接口域名
+        target: 'http://10.25.16.29:8080',  // 接口域名
         secure: false,  // 如果是https接口，需要配置这个参数
         changeOrigin: true,  //是否跨域
         pathRewrite: {

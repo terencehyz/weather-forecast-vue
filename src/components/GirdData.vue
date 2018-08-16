@@ -4,19 +4,19 @@
       <mu-col span="4">
         <div class="LifeGrid">
           <p>体感温度</p>
-          <p>{{feels_like}}</p>
+          <p>{{feels_like}}°C</p>
         </div>
       </mu-col>
       <mu-col span="4">
         <div class="LifeGrid">
           <p>气压</p>
-          <p>{{pressure}}百帕</p>
+          <p>{{pressure}} 百帕</p>
         </div>
       </mu-col>
       <mu-col span="4">
         <div class="LifeGrid CanMar">
           <p>能见度</p>
-          <p>{{visibility}}公里</p>
+          <p>{{visibility}} km</p>
         </div>
       </mu-col>
     </mu-row>

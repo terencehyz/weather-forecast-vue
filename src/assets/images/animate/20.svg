@@ -3503,26 +3503,26 @@
     <g class="climacon_iconWrap climacon_iconWrap-cloudHailAltFill">
         <g class="climacon_componentWrap climacon_componentWrap-hailAlt">
             <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-left">
-                <circle cx="42" cy="65.498" r="2"/>
+                <circle fill="rgba(255, 255, 255, 0.8)" cx="42" cy="65.498" r="2"/>
             </g>
             <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-middle">
-                <circle cx="49.999" cy="65.498" r="2"/>
+                <circle fill="rgba(255, 255, 255, 0.8)" cx="49.999" cy="65.498" r="2"/>
             </g>
             <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-right">
-                <circle cx="57.998" cy="65.498" r="2"/>
+                <circle fill="rgba(255, 255, 255, 0.8)" cx="57.998" cy="65.498" r="2"/>
             </g>
             <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-left">
-                <circle cx="42" cy="65.498" r="2"/>
+                <circle fill="rgba(255, 255, 255, 0.8)" cx="42" cy="65.498" r="2"/>
             </g>
             <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-middle">
-                <circle cx="49.999" cy="65.498" r="2"/>
+                <circle fill="rgba(255, 255, 255, 0.8)" cx="49.999" cy="65.498" r="2"/>
             </g>
             <g class="climacon_component climacon_component-stroke climacon_component-stroke_hailAlt climacon_component-stroke_hailAlt-right">
-                <circle cx="57.998" cy="65.498" r="2"/>
+                <circle fill="rgba(255, 255, 255, 0.8)" cx="57.998" cy="65.498" r="2"/>
             </g>
         </g>
         <g class="climacon_componentWrap climacon_componentWrap_cloud">
-            <path
+            <path fill="rgba(255, 255, 255, 0.8)"
             class="climacon_component climacon_component-stroke climacon_component-stroke_cloud"
             d="M43.945,65.639c-8.835,0-15.998-7.162-15.998-15.998c0-8.836,7.163-15.998,15.998-15.998c6.004,0,11.229,3.312,13.965,8.203c0.664-0.113,1.338-0.205,2.033-0.205c6.627,0,11.998,5.373,11.998,12c0,6.625-5.371,11.998-11.998,11.998C57.168,65.639,47.143,65.639,43.945,65.639z"/>
             <path

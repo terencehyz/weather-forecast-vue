@@ -156,7 +156,7 @@
         }
 
     ]]></style>
-    <clipPath id="sunFillClip" >
+    <clipPath id="sunFillClip">
         <path fill="rgba(255, 255, 255, 0.8)"
         d="M0,0v100h100V0H0z M50.001,57.999c-4.417,0-8-3.582-8-7.999c0-4.418,3.582-7.999,8-7.999s7.998,3.581,7.998,7.999C57.999,54.417,54.418,57.999,50.001,57.999z"
         />
@@ -199,7 +199,6 @@
             </g>
             <g class="climacon_componentWrap climacon_componentWrap_sunBody" clip-path="url(#sunFillClip)">
                 <circle
-                  fill="rgba(255, 255, 255, 0.8)"
                 class="climacon_component climacon_component-stroke climacon_component-stroke_sunBody"
                 cx="50.034"
                 cy="50"

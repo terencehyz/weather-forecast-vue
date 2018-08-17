@@ -60,9 +60,6 @@
       icon: {
         required: true
       }
-    },
-    mounted(){
-      console.log(this.icon)
     }
   }
 </script>
@@ -77,6 +74,11 @@
   .weather__icon {
     width: 12em;
     margin-bottom: 5em;
+    fill: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.8);
+  }
+  svg path {
+    fill: rgba(255,255,255,0.8);
   }
 
 </style>

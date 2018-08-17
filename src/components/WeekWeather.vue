@@ -1,7 +1,7 @@
 <template>
   <div class="weekWeather">
     <mu-container>
-      <mu-row gutter v-for="(data,index) in weekData" :key="index">
+      <mu-row gutter v-for="(data,index) in weekData" :key="index" v-if="index!=0">
         <mu-col span="4" class="weekInfo">{{data.week}}</mu-col>
         <mu-col span="4" class="iconInfo">
           <img :src="imgList[data.code_day]" alt="weather" class="weekWeatherImg">

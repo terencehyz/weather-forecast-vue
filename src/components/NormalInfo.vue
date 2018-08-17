@@ -58,7 +58,7 @@
           path: '/AirCondition',
           name: 'AirCondition',
           params: {
-            name: "ceshi111"
+
           }
         })
       },

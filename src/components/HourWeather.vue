@@ -2,7 +2,7 @@
   <div>
     <mu-container>
       <mu-row>
-        <mu-col span="6" class="weekInfo">{{week}}</mu-col>
+        <mu-col span="6" class="weekInfo">{{week}} <small>今天</small></mu-col>
         <mu-col span="6" class="Temper">{{high}}&nbsp;&nbsp;&nbsp;{{low}}</mu-col>
       </mu-row>
     </mu-container>

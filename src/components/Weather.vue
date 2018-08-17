@@ -62,11 +62,6 @@
       name: "Home",
       data(){
         return{
-          mock:{
-            b:"良",
-            d:"小雨",
-            loaction:"沈阳市 浑南区",
-          },
           lifeData:{},
           location:{},
           now:{},

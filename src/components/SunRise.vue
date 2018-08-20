@@ -79,9 +79,9 @@
             //context.beginPath();
             context.fillStyle = '#67A7B9';
             //context.lineWidth = 10;
-            context.font = 'bold 20px sans-serif'
-            context.fillText(this.day_begin, 30, h - 3);
-            context.fillText(this.day_end, w - 130, h - 3);
+            context.font = 'bold 30px sans-serif'
+            context.fillText(this.day_begin, 30, h - 5);
+            context.fillText(this.day_end, w - 180, h - 5);
 
             /**
              * 画虚线

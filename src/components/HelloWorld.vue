@@ -126,8 +126,8 @@
       }
     },
     mounted() {
-      //this.getUserCurrentLocation();
-      this.GaoDeAPI();
+      this.getUserCurrentLocation();
+      //this.GaoDeAPI();
       //this.TencentAPI();
       //this.IPLocation();
     }

@@ -13,8 +13,9 @@ export default {
 </script>
 
 <style>
+  @import './common/font/font.css';
   #app{
-    font-family: SourceHanSansCN-Normal;
+    font-family: SourceHanSansCN;
   }
   main {
     width: 100%;

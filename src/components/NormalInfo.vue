@@ -58,7 +58,10 @@
           path: '/AirCondition',
           name: 'AirCondition',
           params: {
-
+            lon:this.lon,
+            lat:this.lat,
+            city:this.city,
+            checkType:this.checkType
           }
         })
       },
@@ -68,7 +71,10 @@
           path: '/WindCondition',
           name: 'WindCondition',
           params: {
-            name: "ceshi111"
+            wind_direction: this.wind_direction,
+            wind_direction_degree: this.wind_direction_degree,
+            wind_speed:this.windSpeed,
+            wind_scale:this.wind_scale
           }
         })
       }
@@ -86,6 +92,27 @@
       },
       humidity: {
         required: true
+      },
+      wind_direction: {
+        required: true
+      },
+      wind_direction_degree: {
+        required: true
+      },
+      wind_scale: {
+        required: true
+      },
+      city:{
+        required: false
+      },
+      lon:{
+        required: false
+      },
+      lat:{
+        required: false
+      },
+      checkType:{
+        required: false
       }
     }
   }

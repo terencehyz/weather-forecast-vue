@@ -23,6 +23,62 @@
       }
     },
     methods: {
+      IPLocation(){
+        var _this = this;
+        var url = "https://api.map.baidu.com/location/ip";
+        this.$http.get(url).then(function (res) {
+          console.log(res.data);
+        })
+      },
+      TencentAPI(){
+        var geolocation = new qq.maps.Geolocation();
+        var options = {timeout: 5000};
+        geolocation.getLocation(showPosition, showErr, options);
+        function showPosition(position) {
+          console.log(JSON.stringify(position, null, 4));
+        };
+        function showErr() {
+          console.log("Tencent定位失败");
+        };
+      },
+      GaoDeAPI(){
+        var _this = this;
+        var map, geolocation;
+        //加载地图，调用浏览器定位服务
+        map = new AMap.Map('FakeContainer', {
+          resizeEnable: true
+        });
+        map.plugin('AMap.Geolocation', function() {
+          geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            buttonPosition:'RB'
+          });
+          map.addControl(geolocation);
+          geolocation.getCurrentPosition();
+          AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+          AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+        });
+        //解析定位结果
+        function onComplete(data) {
+          var str=['定位成功'];
+          str.push('经度：' + data.position.getLng());
+          str.push('纬度：' + data.position.getLat());
+          _this.lon = data.position.getLng();
+          _this.lat = data.position.getLat();
+          if(data.accuracy){
+            str.push('精度：' + data.accuracy + ' 米');
+          }//如为IP精确定位结果则没有精度信息
+          str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+          //console.log(str);
+        }
+        //解析定位错误信息
+        function onError(data) {
+          console.log("gaode:"+data.message);
+        }
+      },
       getUserCurrentLocation() {
         var _this = this;
         if (navigator.geolocation) {
@@ -44,25 +100,25 @@
           });
         }
         else {
-          alert('您的浏览器不支持，请手动定位');
+          console.log('h5-您的浏览器不支持，请手动定位');
         }
 
         function locationError(error) {
           switch (error.code) {
             case 1:
-              alert("位置服务被拒绝");
+              console.log("h5-位置服务被拒绝");
               break;
 
             case 2:
-              alert("暂时获取不到位置信息");
+              console.log("h5-暂时获取不到位置信息");
               break;
 
             case 3:
-              alert("获取信息超时");
+              console.log("h5-获取信息超时");
               break;
 
             case 4:
-              alert("未知错误");
+              console.log("h5-未知错误");
               break;
           }
         }
@@ -70,12 +126,17 @@
       }
     },
     mounted() {
-      this.getUserCurrentLocation();
+      //this.getUserCurrentLocation();
+      this.GaoDeAPI();
+      //this.TencentAPI();
+      //this.IPLocation();
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+#FakeContainer{
+  display: none;
+}
 </style>

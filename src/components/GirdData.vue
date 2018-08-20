@@ -57,6 +57,7 @@
     color: #67A7B9;
     margin-top: 0.25rem;
     margin-bottom: 0.1rem;
+    font-size: 1.1rem;
   }
   .CanMar {
     margin-right: 0;

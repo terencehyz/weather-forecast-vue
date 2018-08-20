@@ -15,6 +15,10 @@ var $http = axios.create({
 
 Vue.prototype.$http = $http;
 
+import 'muse-ui-progress/dist/muse-ui-progress.css';
+import NProgress from 'muse-ui-progress';
+Vue.use(NProgress);
+
 Vue.use(MuseUI)
 
 Vue.config.productionTip = false
@@ -26,3 +30,6 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+NProgress.start();
+NProgress.done();

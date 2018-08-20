@@ -1,11 +1,18 @@
 <template>
     <div>
         <NormalInfo
-          v-bind:windSpeed="now.wind_speed"
-          v-bind:air="now.quality"
-          v-bind:humidity="now.humidity"
-          v-bind:value="now.temperature"
-        ></NormalInfo>
+        v-bind:windSpeed="now.wind_speed"
+        v-bind:air="now.quality"
+        v-bind:humidity="now.humidity"
+        v-bind:value="now.temperature"
+        v-bind:wind_direction="now.wind_direction"
+        v-bind:wind_direction_degree="now.wind_direction_degree"
+        v-bind:wind_scale="now.wind_scale"
+        v-bind:lon="lon"
+        v-bind:lat="lat"
+        v-bind:city="city"
+        v-bind:checkType="checkType"
+      ></NormalInfo>
         <LocationInfo
           :location="location.name+','+location.country"
           :description="now.text"
@@ -22,13 +29,16 @@
         <WeekWeather
           :week-data="weekData"
         ></WeekWeather>
+        <SunRise></SunRise>
         <GridData
           :visibility="now.visibility"
           :feels_like="now.feels_like"
           :pressure="now.pressure"
         ></GridData>
         <LifeData
+          v-if="this.Detail!=undefined"
           :life-data="this.lifeData"
+          :detail="this.Detail"
         ></LifeData>
     </div>
 </template>
@@ -43,8 +53,9 @@
   import WeekWeather from './WeekWeather'
   import HourWeather from './HourWeather'
   import YoScroll from './YoScroll'
+  import SunRise from './SunRise'
     export default {
-      components: {NormalInfo,LocationInfo,IconInfo,SunDial,LifeData,GridData,WeekWeather,HourWeather,YoScroll},
+      components: {NormalInfo,LocationInfo,IconInfo,SunDial,LifeData,GridData,WeekWeather,HourWeather,YoScroll,SunRise},
       props:{
         lat:{
           required:true
@@ -68,7 +79,8 @@
           last_update:{},
           weekData:[],
           high:0,
-          low:0
+          low:0,
+          Detail:{}
         }
       },
       methods:{
@@ -89,6 +101,19 @@
           }
           this.$http.get(url).then(function (res) {
             _this.lifeData = res.data.info;
+          })
+        },
+        getLifeDataDeatil(){
+          var url = '/apis/getsuggestionlife?location=';
+          var _this = this;
+          if (_this.checkType=="data"){
+            url = url + _this.lat+':'+_this.lon;
+          }
+          else {
+            url = url+_this.city;
+          }
+          this.$http.get(url).then(function (res) {
+            _this.Detail = res.data.info.results[0].suggestion;
           })
         },
         getNowWeather() {
@@ -127,6 +152,7 @@
         this.getLifeData();
         this.getNowWeather();
         this.getWeekWeather();
+        this.getLifeDataDeatil();
       }
     }
 </script>

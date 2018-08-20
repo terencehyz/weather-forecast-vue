@@ -1,7 +1,15 @@
 <template>
     <section>
-      <div class="location">{{ location }}</div>
-      <div class="weather__description">{{ description }}</div>
+      <div class="location">
+        <span class="location__text">
+          {{ location }}
+        </span>
+      </div>
+      <div class="weather__description">
+        <span class="location__text">
+          {{ description }}
+        </span>
+      </div>
     </section>
 </template>
 
@@ -24,13 +32,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     color: rgba(255, 255, 255, 0.9);
   }
 
   .location {
     text-transform: uppercase;
-    font-weight: bold;
   }
 
   .weather__description {
@@ -42,5 +48,10 @@
 
   .weather__description:first-letter {
     text-transform: uppercase;
+  }
+
+  .location__text{
+    font-weight: bold;
+    font-size: 1.35rem;
   }
 </style>

@@ -4,7 +4,16 @@ import HelloWorld from '@/components/HelloWorld'
 
 import WindCondition from '@/components/WindCondition'
 import AirCondition from '@/components/AirCondition'
-import SunDial from '@/components/SunDial'
+import City from '@/components/City'
+
+import Dressing from '@/components/Dressing'
+import Sunshine from '@/components/Sunshine'
+import Sports from '@/components/Sports'
+import Health from '@/components/Health'
+import Transport from '@/components/Transport'
+import Entertainment from '@/components/Entertainment'
+import MakeUp from '@/components/MakeUp'
+import Cal from '@/components/Cal'
 
 Vue.use(Router)
 
@@ -26,8 +35,48 @@ export default new Router({
       component: WindCondition
     },
     {
+      path: '/Dressing',
+      name: 'Dressing',
+      component: Dressing
+    },
+    {
+      path: '/Sunshine',
+      name: 'Sunshine',
+      component: Sunshine
+    },
+    {
+      path: '/Sports',
+      name: 'Sports',
+      component: Sports
+    },
+    {
+      path: '/Health',
+      name: 'Health',
+      component: Health
+    },
+    {
+      path: '/Transport',
+      name: 'Transport',
+      component: Transport
+    },
+    {
+      path:'/Entertainment',
+      name: 'Entertainment',
+      component: Entertainment
+    },
+    {
+      path:'/MakeUp',
+      name:'MakeUp',
+      component:MakeUp
+    },
+    {
       path:'/test',
-      component:SunDial
+      component:City
+    },
+    {
+      path:'/Cal',
+      name:'Cal',
+      component:Cal
     }
   ]
 })

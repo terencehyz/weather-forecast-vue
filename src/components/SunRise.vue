@@ -1,9 +1,9 @@
 <template>
-   
+
     <div class="sun" id="sun">
         <canvas id="canvas">A Drawing of something</canvas>
     </div>
-               
+
 </template>
 
 <script>
@@ -18,7 +18,7 @@
             let sun = document.getElementById("sun")
             let canvas = document.getElementById('canvas');
 
-            let w = 200 * aut
+            let w = sun.clientWidth * aut
             let h = 100 * aut
             canvas.width = w;
             canvas.height = h;
@@ -133,7 +133,7 @@
                 let sun = document.getElementById("sun")
                 let canvas = document.getElementById('canvas');
 
-                let w = 200
+                let w = sun.clientWidth
                 let h = 100
                 canvas.width = w;
                 canvas.height = h;
@@ -291,8 +291,12 @@
     }
 
     .sun {
-        width: 90%;
+        width: 100%;
         height: 100px;
+      background: -webkit-linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* Opera 11.1 - 12.0 */
+      background: -moz-linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* Firefox 3.6 - 15 */
+      background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* 标准的语法 */
     }
 
     .my-card {

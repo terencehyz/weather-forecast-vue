@@ -3,25 +3,25 @@
     <mu-row>
       <mu-col span="3">
         <div class="LifeGrid" @click="navToDetail(1)">
-          <img src="../assets/images/LifeData/calander.png" alt="生活信息">
+          <img src="../assets/images/LifeData/calander.png" alt="生活信息" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.date}}</p>
         </div>
       </mu-col>
       <mu-col span="3">
         <div class="LifeGrid" @click="navToDetail(2)">
-          <img src="../assets/images/LifeData/cloth.png" alt="穿衣指数">
+          <img src="../assets/images/LifeData/cloth.png" alt="穿衣指数" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.dressing}}</p>
         </div>
       </mu-col>
       <mu-col span="3">
         <div class="LifeGrid" @click="navToDetail(3)">
-          <img src="../assets/images/LifeData/sunshine.png" alt="生活信息">
+          <img src="../assets/images/LifeData/sunshine.png" alt="生活信息" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.uv}}</p>
         </div>
       </mu-col>
       <mu-col span="3">
         <div class="LifeGrid CanMar" @click="navToDetail(4)">
-          <img src="../assets/images/LifeData/sports.png" alt="生活信息">
+          <img src="../assets/images/LifeData/sports.png" alt="生活信息" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.sport}}</p>
         </div>
       </mu-col>
@@ -29,25 +29,25 @@
     <mu-row >
       <mu-col span="3">
         <div class="LifeGrid" @click="navToDetail(5)">
-          <img src="../assets/images/LifeData/health.png" alt="生活信息">
+          <img src="../assets/images/LifeData/health.png" alt="生活信息" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.air_pollution}}</p>
         </div>
       </mu-col>
       <mu-col span="3">
         <div class="LifeGrid" @click="navToDetail(6)">
-          <img src="../assets/images/LifeData/transport.png" alt="交通指数">
+          <img src="../assets/images/LifeData/transport.png" alt="交通指数" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.traffic}}</p>
         </div>
       </mu-col>
       <mu-col span="3">
         <div class="LifeGrid" @click="navToDetail(7)">
-          <img src="../assets/images/LifeData/entertainment.png" alt="娱乐指数">
+          <img src="../assets/images/LifeData/entertainment.png" alt="娱乐指数" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.goout}}</p>
         </div>
       </mu-col>
       <mu-col span="3">
         <div class="LifeGrid CanMar" @click="navToDetail(8)">
-          <img src="../assets/images/LifeData/makeup.png" alt="美妆指数">
+          <img src="../assets/images/LifeData/makeup.png" alt="美妆指数" oncontextmenu="return false;" ondragstart="return false;">
           <p>{{lifeData.makeup}}</p>
         </div>
       </mu-col>
@@ -71,7 +71,7 @@
       methods:{
         navToDetail(num){
           var _this = this;
-          console.log(this.detail);
+          //console.log(this.detail);
           switch (num) {
             case 1:
               this.$router.push({

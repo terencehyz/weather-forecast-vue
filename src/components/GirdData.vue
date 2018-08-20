@@ -43,7 +43,7 @@
 <style scoped>
   .LifeDataContainer{
     background-color: rgba(255,255,255,0.9);
-    padding-top: 0.35rem;
+    padding-top: 0.8rem;
   }
   .LifeGrid {
     background-color: white;

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <img :src="imgList[icon]" class="weather__icon" :alt="description">
+    <img :src="imgList[icon]" class="weather__icon" :alt="description" oncontextmenu="return false;" ondragstart="return false;">
   </section>
 </template>
 

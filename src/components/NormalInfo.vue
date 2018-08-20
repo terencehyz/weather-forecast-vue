@@ -2,14 +2,16 @@
   <div>
     <section class="sectionA">
       <div class="air-quality" @click="navToAirCondition()">
-        <img src="../assets/icons/quality.svg" alt="air quality"><span class="air__value normalText">{{ air }}</span>
+        <img src="../assets/icons/quality.svg" alt="air quality" oncontextmenu="return false;" ondragstart="return false;">
+        <span class="air__value normalText">{{ air }}</span>
       </div>
       <div class="wind-speed" @click="navToWindCondition()">
-        <img src="../assets/icons/wind.svg" alt="wind speed"><span
-        class="wind__value normalText">{{ windSpeed }}m/s</span>
+        <img src="../assets/icons/wind.svg" alt="wind speed" oncontextmenu="return false;" ondragstart="return false;">
+        <span class="wind__value normalText">{{ windSpeed }}m/s</span>
       </div>
       <div class="humidity">
-        <img src="../assets/icons/humidity.svg" alt="humidity"><span class="humidity__value normalText">{{ humidity }}&percnt;</span>
+        <img src="../assets/icons/humidity.svg" alt="humidity" oncontextmenu="return false;" ondragstart="return false;">
+        <span class="humidity__value normalText">{{ humidity }}&percnt;</span>
       </div>
     </section>
     <section class="sectionB">

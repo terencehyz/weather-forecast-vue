@@ -4,7 +4,7 @@
       <mu-row gutter v-for="(data,index) in weekData" :key="index" v-if="index!=0">
         <mu-col span="4" class="weekInfo">{{data.week}}</mu-col>
         <mu-col span="4" class="iconInfo">
-          <img :src="imgList[data.code_day]" alt="weather" class="weekWeatherImg">
+          <img :src="imgList[data.code_day]" alt="weather" class="weekWeatherImg" ondragstart="return false;" oncontextmenu="return false;">
         </mu-col>
         <mu-col span="4" class="Temper">{{data.high}}&nbsp;&nbsp;&nbsp;{{data.low}}</mu-col>
       </mu-row>

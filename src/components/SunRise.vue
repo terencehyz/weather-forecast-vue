@@ -1,9 +1,9 @@
 <template>
-
-    <div class="sun" id="sun">
-        <canvas id="canvas">A Drawing of something</canvas>
-    </div>
-
+<div class="contain">
+  <div class="sun" id="sun">
+    <canvas id="canvas">A Drawing of something</canvas>
+  </div>
+</div>
 </template>
 
 <script>
@@ -29,7 +29,7 @@
              * 轨迹
              */
             context.lineCap = 'round';
-            context.strokeStyle = '#ff7411';
+            context.strokeStyle = '#67A7B9';
             context.lineWidth = 2 * aut;
             context.moveTo(0, h);
             context.quadraticCurveTo(w / 2, -h / 2, w, h)
@@ -59,7 +59,7 @@
             sun_y = (1 - t) * (1 - t) * h + 2 * t * (1 - t) * (-h / 2) + t * t * h
 
             context.beginPath();
-            context.arc(sun_x, sun_y, 15 * aut, 0, 2 * Math.PI * aut);
+            context.arc(sun_x, sun_y, 8 * aut, 0, 2 * Math.PI * aut);
             context.strokeStyle = '#ffffff';
             context.fillStyle = '#fff40c'
             context.fill()
@@ -69,7 +69,7 @@
             context.beginPath();
             context.strokeStyle = '#ffcc89';
             context.lineWidth = 1 * aut;
-            context.moveTo(sun_x, sun_y + 17 * aut);
+            context.moveTo(sun_x, sun_y + 10 * aut);
             context.lineTo(sun_x, h - 10 * aut)
             context.stroke()
 
@@ -77,7 +77,7 @@
              * 时间
              */
             //context.beginPath();
-            context.fillStyle = '#ff7411';
+            context.fillStyle = '#67A7B9';
             //context.lineWidth = 10;
             context.font = 'bold 20px sans-serif'
             context.fillText(this.day_begin, 30, h - 3);
@@ -293,6 +293,10 @@
     .sun {
         width: 100%;
         height: 100px;
+    }
+
+    .contain{
+      padding: 0 3rem;
       background: -webkit-linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* Safari 5.1 - 6.0 */
       background: -o-linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* Opera 11.1 - 12.0 */
       background: -moz-linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.9)); /* Firefox 3.6 - 15 */

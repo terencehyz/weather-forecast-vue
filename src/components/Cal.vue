@@ -10,23 +10,25 @@
       <mu-container>
         <p class="data">{{newDate}}</p>
         <p class="Air__Title">{{cal.ganzhi_year}}年{{cal.ganzhi_month}}月</p>
-
+        <img src="../assets/images/SolarTerms/1.gif" alt="节气"  oncontextmenu="return false;" ondragstart="return false;" class="solar">
         <mu-row gutter>
           <mu-col span="6">
-            <img src="../assets/images/cards/cal.png" alt="空气质量" class="card__img">
+            <img src="../assets/images/cards/cal.png" alt="空气质量" oncontextmenu="return false;" ondragstart="return false;" class="card__img">
           </mu-col>
 
           <mu-col span="3">
-            <img src="../assets/images/cards/icon/宜.png" alt="空气质量" class="sm__img">
+            <img src="../assets/images/cards/icon/宜.png" alt="宜" oncontextmenu="return false;" ondragstart="return false;" class="sm__img">
             <div class="postive">
-              123
+              <span v-for="(item,index) in yi" :key="index">{{item}} </span>
+              <br>
             </div>
 
           </mu-col>
           <mu-col span="3">
-            <img src="../assets/images/cards/icon/忌.png" alt="空气质量" class="sm__img">
+            <img src="../assets/images/cards/icon/忌.png" alt="忌" oncontextmenu="return false;" ondragstart="return false;" class="sm__img">
             <div class="negative">
-              456
+              <span v-for="(item,index) in ji" :key="index">{{item}} </span>
+              <br>
             </div>
           </mu-col>
         </mu-row>
@@ -46,7 +48,9 @@
         lon:"",
         lat:"",
         city:"",
-        checkType:""
+        checkType:"",
+        yi:[],
+        ji:[]
       }
     },
     methods:{
@@ -55,15 +59,17 @@
       },
       getData(){
         var _this = this;
-        var url = '/apis/getcalendarlife?location=';
-        if (_this.checkType=="data"){
+        var url = '/apis/getcalendarlife?location=hhht';
+        /*if (_this.checkType=="data"){
           url = url + _this.lat+':'+_this.lon;
         }
         else {
           url = url+_this.city;
-        }
+        }*/
         this.$http.get(url).then(function (res) {
           _this.cal = res.data.info.results.chinese_calendar[0];
+          _this.yi = _this.cal.yi;
+          _this.ji = _this.cal.ji;
         })
       }
     },
@@ -84,6 +90,9 @@
 </script>
 
 <style scoped>
+  .solar{
+    width: 100%;
+  }
   .postive{
     color: rgb(243,192,119);
     text-align: center;

@@ -47,7 +47,6 @@
   import NormalInfo from './NormalInfo'
   import LocationInfo from './LocationInfo'
   import IconInfo from './IconInfo'
-  import SunDial from './SunDial'
   import LifeData from './LifeData'
   import GridData from './GirdData'
   import WeekWeather from './WeekWeather'
@@ -55,7 +54,7 @@
   import YoScroll from './YoScroll'
   import SunRise from './SunRise'
     export default {
-      components: {NormalInfo,LocationInfo,IconInfo,SunDial,LifeData,GridData,WeekWeather,HourWeather,YoScroll,SunRise},
+      components: {NormalInfo,LocationInfo,IconInfo,LifeData,GridData,WeekWeather,HourWeather,YoScroll,SunRise},
       props:{
         lat:{
           required:true
@@ -149,9 +148,9 @@
         }
       },
       created() {
-        this.getLifeData();
         this.getNowWeather();
         this.getWeekWeather();
+        this.getLifeData();
         this.getLifeDataDeatil();
       }
     }

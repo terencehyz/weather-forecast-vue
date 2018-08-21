@@ -70,7 +70,8 @@ export default new Router({
       component:MakeUp
     },
     {
-      path:'/test',
+      path:'/City',
+      name:'City',
       component:City
     },
     {

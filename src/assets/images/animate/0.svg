@@ -198,7 +198,7 @@
                 />
             </g>
             <g class="climacon_componentWrap climacon_componentWrap_sunBody" clip-path="url(#sunFillClip)">
-                <circle
+                <circle fill="rgba(255, 255, 255, 0.8)"
                 class="climacon_component climacon_component-stroke climacon_component-stroke_sunBody"
                 cx="50.034"
                 cy="50"

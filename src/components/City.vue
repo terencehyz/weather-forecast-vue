@@ -37,7 +37,7 @@
     		</mu-col>
   		</mu-row>
 	</mu-container>
-   /*小加号*/
+   /*小加号，切换主题时需换图*/
 	<div>
 		<img src="../assets/city/add_night.png" class="d6">
 	</div>
@@ -56,11 +56,12 @@
 </script>
 
 <style scoped>
-	
+	/*白天主题*/
 	.day{
 		background-color:white;
 		border:0px;
 	}
+  /*夜晚主题*/
 	.night{
 		background-color:#1C2626;
 		border:0px;

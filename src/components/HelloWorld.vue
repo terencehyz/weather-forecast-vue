@@ -68,6 +68,9 @@
           str.push('纬度：' + data.position.getLat());
           _this.lon = data.position.getLng();
           _this.lat = data.position.getLat();
+          var c = data.addressComponent.city;
+          localStorage.setItem('currentCity',c);
+          console.log(c);
           if(data.accuracy){
             str.push('精度：' + data.accuracy + ' 米');
           }//如为IP精确定位结果则没有精度信息
@@ -126,8 +129,11 @@
       }
     },
     mounted() {
-      this.getUserCurrentLocation();
-      //this.GaoDeAPI();
+      //this.getUserCurrentLocation();
+      //var a=['呼和浩特','北京','武汉'];
+      //localStorage.setItem('cityList',JSON.stringify(a));
+      this.GaoDeAPI();
+
       //this.TencentAPI();
       //this.IPLocation();
     }

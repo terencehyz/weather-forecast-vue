@@ -1,7 +1,7 @@
 <template>
   <div class="night">
     <mu-container style="padding: 0; background-color: white">
-      <mu-row class="d2" @click="back()" v-if="list.length" :style="{backgroundImage:'url(http://pde0lokle.bkt.clouddn.com/'+list[0].results[0].location.name+dayOrNight+'.jpg'}">
+      <mu-row class="d2" @click="back()" v-if="list.length" :style="{backgroundImage:'url('+list[0].results[0].now.imageurl+dayOrNight+'.jpg'}">
         <mu-col span="9">
           <div class="d3">
             {{list[0].results[0].now.text}}
@@ -25,7 +25,7 @@
         v-if="i!=0"
       >
         <div class="demo-item">
-          <mu-row class="d2" @click="navToFav(item.results[0].location.name)" :style="{backgroundImage:'url(http://pde0lokle.bkt.clouddn.com/'+item.results[0].location.name+dayOrNight+'.jpg'}">
+          <mu-row class="d2" @click="navToFav(item.results[0].location.name)" :style="{backgroundImage:'url(https://friendly-wilson-dbafa5.netlify.com/'+item.results[0].location.name+dayOrNight+'.jpg'}">
             <mu-col span="9">
               <div class="d3">
                 {{item.results[0].now.text}}
@@ -74,6 +74,13 @@
           return 1
         else
           return 2
+      },
+      defaultPic:function () {
+        if (d.getHours()>=6&&d.getHours()<=18)
+          return "https://friendly-wilson-dbafa5.netlify.com/default_city_day.jpg"
+        else
+          return "https://friendly-wilson-dbafa5.netlify.com/default_city_night.jpg"
+
       }
     },
     methods: {

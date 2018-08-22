@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-
 import WindCondition from '@/components/WindCondition'
 import AirCondition from '@/components/AirCondition'
 import City from '@/components/City'
-
 import Dressing from '@/components/Dressing'
 import Sunshine from '@/components/Sunshine'
 import Sports from '@/components/Sports'
@@ -15,6 +13,7 @@ import Entertainment from '@/components/Entertainment'
 import MakeUp from '@/components/MakeUp'
 import Cal from '@/components/Cal'
 import Favourite from '@/components/Favourite'
+import Share from '@/components/Share'
 
 Vue.use(Router)
 
@@ -84,6 +83,11 @@ export default new Router({
       path:'/Favourite',
       name:'Favourite',
       component:Favourite
+    },
+    {
+      path:'/Share',
+      name:'Share',
+      component:Share
     }
   ]
 })

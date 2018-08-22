@@ -24,14 +24,16 @@
           :description="now.text"
         ></IconInfo>
         <HourWeather
+          v-if="hourData"
           :week="now.week"
           :high="high"
           :low="low"
+          :hourData="hourData"
         ></HourWeather>
         <WeekWeather
           :week-data="weekData"
         ></WeekWeather>
-        <SunRise v-if="lon!=undefined||lat!=undefined"
+        <SunRise v-if="lon!=undefined||lat!=undefined||city!=undefined"
                  :lon="lon"
                  :lat="lat"
                  :city="city"
@@ -72,7 +74,7 @@
                     <mu-list-item button>
                       <mu-list-item-title>视频播报</mu-list-item-title>
                     </mu-list-item>
-                    <mu-list-item button>
+                    <mu-list-item button @click="share()">
                       <mu-list-item-title>分享天气</mu-list-item-title>
                     </mu-list-item>
                     <mu-list-item button @click="open = !open">
@@ -133,10 +135,32 @@
         localPeom:" ",
         num: 10,
         refreshing: false,
-        loading: false
+        loading: false,
+        hourData:[]
       }
     },
     methods: {
+      share(){
+        const loading = this.$loading();
+        var _this = this;
+        var url = '/apis/getshareimage?location=';
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
+          url = url + _this.lat + ':' + _this.lon;
+        }
+        else {
+          url = url + _this.city;
+        }
+        this.$http.get(url).then(function (res) {
+          loading.close();
+          _this.$router.push({
+            path: '/Share',
+            name: 'Share',
+            params: {
+              shareImg:res.data.info
+            }
+          });
+        })
+      },
       audioGet(){
         var _this = this;
         var url = '/apis/getspeech?location=';
@@ -242,11 +266,25 @@
         this.$http.get(url).then(function (res) {
           _this.poem =  res.data.info;
         })
+      },
+      getHourLy(){
+        var _this = this;
+        var url = '/apis/gethourlyweather?location=';
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
+          url = url + _this.lat + ':' + _this.lon;
+        }
+        else {
+          url = url + _this.city;
+        }
+        this.$http.get(url).then(function (res) {
+          _this.hourData = res.data.info.results[0].hourly;
+        })
       }
     },
     created() {
       this.getNowWeather();
       this.getWeekWeather();
+      this.getHourLy();
       this.getLifeData();
       this.getLifeDataDeatil();
       this.getPoem();

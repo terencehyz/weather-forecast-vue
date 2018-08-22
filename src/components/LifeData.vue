@@ -128,7 +128,7 @@
                   comfort:this.detail.comfort,
                   flu:this.detail.flu,
                   mood:this.detail.mood
-            }
+                }
               });
               break;
             case 6:

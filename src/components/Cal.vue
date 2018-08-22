@@ -8,14 +8,15 @@
     </mu-appbar>
     <div class="card">
       <mu-container>
-        <p class="data">{{newDate}}</p>
         <p class="Air__Title">{{cal.ganzhi_year}}年{{cal.ganzhi_month}}月</p>
-        <img src="../assets/images/SolarTerms/1.gif" alt="节气"  oncontextmenu="return false;" ondragstart="return false;" class="solar">
+        <mu-paper v-show="!cal.solar_term" :z-depth="1" class="demo-date-picker">
+          <mu-date-picker color="#4F6E77" :date.sync="date"></mu-date-picker>
+        </mu-paper>
+        <img v-show="cal.solar_term" src="../assets/images/SolarTerms/1.gif" alt="节气"  oncontextmenu="return false;" ondragstart="return false;" class="solar">
         <mu-row gutter>
           <mu-col span="6">
             <img src="../assets/images/cards/cal.png" alt="空气质量" oncontextmenu="return false;" ondragstart="return false;" class="card__img">
           </mu-col>
-
           <mu-col span="3">
             <img src="../assets/images/cards/icon/宜.png" alt="宜" oncontextmenu="return false;" ondragstart="return false;" class="sm__img">
             <div class="postive">
@@ -44,6 +45,7 @@
     name: "Cal",
     data(){
       return{
+        date:undefined,
         cal:{},
         lon:"",
         lat:"",

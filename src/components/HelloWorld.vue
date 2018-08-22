@@ -53,6 +53,7 @@
           _this.lon = data.position.getLng();
           _this.lat = data.position.getLat();
           var c = data.addressComponent.city;
+          c= c.substring(0,c.length-1);
           localStorage.setItem('currentCity',c);
           console.log(c);
           if(data.accuracy){

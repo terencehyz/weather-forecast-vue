@@ -6,6 +6,19 @@
         <mu-col span="6" class="Temper">{{high}}&nbsp;&nbsp;&nbsp;{{low}}</mu-col>
       </mu-row>
     </mu-container>
+    <div class="HourBorder">
+      <div class="HourAuto">
+        <div class="context">
+          <ul style="list-style:none;">
+            <li v-for="(item,index) in hourData" :key="index" class="aDay" style="float:left; padding:0; ">
+              <p>{{backTime(item.time)}}</p>
+              <img :src="imgList[item.code]" alt="icon" ondragstart="return false;" oncontextmenu="return false;">
+              <p>{{item.temperature}}°</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -54,7 +67,13 @@
       name: "HourWeather",
       data() {
         return {
+          tempTime:"",
           imgList: [img0, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16,img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33,img34, img35, img36, img37, img38,img99]
+        }
+      },
+      methods:{
+        backTime(time){
+          return time.substring(11,16);
         }
       },
       props:{
@@ -66,17 +85,48 @@
         },
         low:{
           required:true
+        },
+        hourData:{
+          required:true
         }
       }
     }
 </script>
 
 <style scoped>
+  .aDay{
+    width: 50px;
+    text-align: center;
+    margin-right: 2rem;
+    padding-bottom: 7px;
+  }
+  .aDay img{
+    width: 2rem;
+  }
+  .aDay p{
+    color: white;
+    font-size:1.15rem;
+    margin: 0;
+  }
+  .context{
+    width: 2100px;
+    height: 95px;
+  }
+  .HourAuto{
+    overflow: auto;
+  }
+  .HourBorder{
+    overflow: hidden;
+    width: 100%;
+    height: 130px;
+    border-top: 1px white solid;
+    border-bottom: 1px white solid;
+  }
   .weekInfo{
     padding-left: 1rem;
     height: 1.4rem;
     line-height: 1.3rem;
-    color: white;
+    color: #67A7B9;
     font-size: 1.1rem;
   }
   .Temper{
@@ -84,7 +134,7 @@
     padding-right: 1rem;
     height: 1.7rem;
     line-height: 1.7rem;
-    color: white;
+    color: #67A7B9;
     font-size: 1.1rem;
   }
 </style>

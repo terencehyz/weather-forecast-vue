@@ -27,9 +27,9 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  @media screen and (min-width: 450px) {
-    main {
-      width: 380px;
-    }
-  }
+  /*@media screen and (min-width: 450px) {*/
+    /*main {*/
+      /*width: 380px;*/
+    /*}*/
+  /*}*/
 </style>

@@ -1,8 +1,9 @@
 <template>
-
+  <div class="contain">
     <div class="sun" id="sun">
         <canvas id="canvas">A Drawing of something</canvas>
     </div>
+  </div>
 
 </template>
 
@@ -29,7 +30,7 @@
              * 轨迹
              */
             context.lineCap = 'round';
-            context.strokeStyle = '#ff7411';
+            context.strokeStyle = '#67A7B9';
             context.lineWidth = 2 * aut;
             context.moveTo(0, h);
             context.quadraticCurveTo(w / 2, -h / 2, w, h)
@@ -46,7 +47,7 @@
             sun_y = (1 - t) * (1 - t) * h + 2 * t * (1 - t) * (-h / 2) + t * t * h
 
             context.beginPath();
-            context.arc(sun_x, sun_y, 15 * aut, 0, 2 * Math.PI * aut);
+            context.arc(sun_x, sun_y, 8 * aut, 0, 2 * Math.PI * aut);
             context.strokeStyle = '#ffffff';
             context.fillStyle = '#fff40c'
             context.fill()
@@ -56,7 +57,7 @@
             context.beginPath();
             context.strokeStyle = '#ffcc89';
             context.lineWidth = 1 * aut;
-            context.moveTo(sun_x, sun_y + 17 * aut);
+            context.moveTo(sun_x, sun_y + 10 * aut);
             context.lineTo(sun_x, h - 10 * aut)
             context.stroke()
 
@@ -64,7 +65,7 @@
              * 时间
              */
             //context.beginPath();
-            context.fillStyle = '#ff7411';
+            context.fillStyle = '#67A7B9';
             //context.lineWidth = 10;
             context.font = 'bold 20px sans-serif'
             context.fillText('日出 ' + this.day_begin, 30, h - 3);
@@ -248,7 +249,7 @@
 
 				var _this = this;
 		        var url = '/apis/getsungeo?location=';
-		        if (_this.city == undefined || _this.city == null) {
+		        if (_this.city == undefined || _this.city == null ||_this.city == "") {
 		          url = url + _this.lat + ':' + this.lon;
 		        }
 		        else{
@@ -305,51 +306,59 @@
 </script>
 
 <style scoped>
-    div {
-        color: #656565;
-    }
+  div {
+    color: #656565;
+  }
 
-    .sun-body {
-        height: 200px;
-        /*border-bottom: 10px solid #eeeeee;*/
-        overflow-y: hidden;
-        overflow-x: hidden;
-    }
+  .sun-body {
+    height: 200px;
+    /*border-bottom: 10px solid #eeeeee;*/
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
 
-    .sun-top {
-        width: 100%;
-        height: 120px;
-        padding-top: 15px;
-        padding-left: 5%;
-    }
+  .sun-top {
+    width: 100%;
+    height: 120px;
+    padding-top: 15px;
+    padding-left: 5%;
+  }
 
-    .sun-bottom {
-        width: 100%;
-        height: 80px;
-        padding-top: 15px;
-    }
+  .sun-bottom {
+    width: 100%;
+    height: 80px;
+    padding-top: 15px;
+  }
 
-    .sun-msg {
-        text-align: center;
-        border-right: 1px solid #e6e6e6;
-    }
+  .sun-msg {
+    text-align: center;
+    border-right: 1px solid #e6e6e6;
+  }
 
-    .sun-msg-last {
-        text-align: center;
-    }
+  .sun-msg-last {
+    text-align: center;
+  }
 
-    .sun {
-        width: 90%;
-        height: 100px;
-    }
+  .sun {
+    width: 100%;
+    height: 100px;
+  }
 
-    .my-card {
-        margin-top: 40px;
-        /*margin-bottom:60px;*/
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1)
-    }
+  .contain {
+    padding: 0 3rem;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)); /* 标准的语法 */
+  }
 
-    #canvas {
-        height: 100px;
-    }
+  .my-card {
+    margin-top: 40px;
+    /*margin-bottom:60px;*/
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1)
+  }
+
+  #canvas {
+    height: 100px;
+  }
 </style>

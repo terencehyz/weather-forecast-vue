@@ -31,11 +31,10 @@
         <WeekWeather
           :week-data="weekData"
         ></WeekWeather>
-        <SunRise
-          :lon="lon"
-          :lat="lat"
-          :city="city"
-          :checkType="checkType"
+        <SunRise v-if="lon!=undefined||lat!=undefined"
+                 :lon="lon"
+                 :lat="lat"
+                 :city="city"
         ></SunRise>
         <GridData
           :visibility="now.visibility"
@@ -64,7 +63,7 @@
                     <mu-icon value="more_vert"></mu-icon>
                   </mu-button>
                   <mu-list slot="content">
-                    <mu-list-item button>
+                    <mu-list-item button @click="audioGet()">
                       <mu-list-item-title>语音播报</mu-list-item-title>
                     </mu-list-item>
                     <mu-list-item button>
@@ -114,11 +113,13 @@
       },
       checkType: {
         required: true
-      },
+      }
     },
     name: "Home",
     data() {
       return {
+        AudioURL:"",
+        testlist:null,
         open:false,
         lifeData: {},
         location: {},
@@ -130,13 +131,31 @@
         Detail: {},
         poem:"",
         localPeom:" ",
-
         num: 10,
         refreshing: false,
         loading: false
       }
     },
     methods: {
+      audioGet(){
+        var _this = this;
+        var url = '/apis/getspeech?location=';
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
+          url = url + _this.lat + ':' + _this.lon;
+        }
+        else {
+          url = url + _this.city;
+        }
+        this.$http.get(url).then(function (res) {
+          _this.AudioURL = res.data.info;
+          if (_this.testlist != null) {
+            _this.testlist.pause();
+          }
+          let audio = new Audio(_this.AudioURL);
+          _this.testlist = audio;
+          audio.play();
+        })
+      },
       refresh(){
         this.refreshing = true;
         this.$refs.container.scrollTop = 0;
@@ -163,7 +182,7 @@
       getLifeData() {
         var url = '/apis/getbriefsuggestionlife?location=';
         var _this = this;
-        if (_this.city == undefined || _this.city == null) {
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
           url = url + _this.lat + ':' + _this.lon;
         }
         else {
@@ -176,7 +195,7 @@
       getLifeDataDeatil() {
         var url = '/apis/getsuggestionlife?location=';
         var _this = this;
-        if (_this.city == undefined || _this.city == null) {
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
           url = url + _this.lat + ':' + _this.lon;
         }
         else {
@@ -189,7 +208,7 @@
       getNowWeather() {
         var _this = this;
         var url = '/apis/getNowWeather?location=';
-        if (_this.city == undefined || _this.city == null) {
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
           url = url + _this.lat + ':' + _this.lon;
         }
         else {
@@ -205,7 +224,7 @@
       getWeekWeather() {
         var _this = this;
         var url = "/apis/getdailyweather?location=";
-        if (_this.city == undefined || _this.city == null) {
+        if (_this.city == undefined || _this.city == null|| _this.city == "") {
           url = url + _this.lat + ':' + _this.lon;
         }
         else {

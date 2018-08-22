@@ -4,6 +4,7 @@
       v-if="lat"
       :lat="lat"
       :lon="lon"
+      :city="city"
       :checkType="queryType"
     ></Weather>
   </div>
@@ -19,28 +20,11 @@
       return {
         lat:"",
         lon:"",
-        queryType:"data"
+        queryType:"data",
+        city:""
       }
     },
     methods: {
-      IPLocation(){
-        var _this = this;
-        var url = "https://api.map.baidu.com/location/ip";
-        this.$http.get(url).then(function (res) {
-          console.log(res.data);
-        })
-      },
-      TencentAPI(){
-        var geolocation = new qq.maps.Geolocation();
-        var options = {timeout: 5000};
-        geolocation.getLocation(showPosition, showErr, options);
-        function showPosition(position) {
-          console.log(JSON.stringify(position, null, 4));
-        };
-        function showErr() {
-          console.log("Tencent定位失败");
-        };
-      },
       GaoDeAPI(){
         var _this = this;
         var map, geolocation;
@@ -130,12 +114,9 @@
     },
     mounted() {
       //this.getUserCurrentLocation();
-      //var a=['呼和浩特','北京','武汉'];
       //localStorage.setItem('cityList',JSON.stringify(a));
       this.GaoDeAPI();
-
-      //this.TencentAPI();
-      //this.IPLocation();
+      localStorage.removeItem("choosen");
     }
   }
 </script>

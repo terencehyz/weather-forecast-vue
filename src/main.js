@@ -8,11 +8,9 @@ import axios from 'axios'
 import 'muse-ui/dist/muse-ui.css'
 import 'typeface-roboto'
 
-var $http = axios.create({
 
-});
 
-Vue.prototype.$http = $http;
+Vue.prototype.$http = axios;
 
 import 'muse-ui-progress/dist/muse-ui-progress.css';
 import NProgress from 'muse-ui-progress';

@@ -14,6 +14,7 @@ import Transport from '@/components/Transport'
 import Entertainment from '@/components/Entertainment'
 import MakeUp from '@/components/MakeUp'
 import Cal from '@/components/Cal'
+import Favourite from '@/components/Favourite'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({
       path:'/Cal',
       name:'Cal',
       component:Cal
+    },
+    {
+      path:'/Favourite',
+      name:'Favourite',
+      component:Favourite
     }
   ]
 })

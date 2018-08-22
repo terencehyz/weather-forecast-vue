@@ -1,8 +1,7 @@
 <template>
   <div class="night">
-
-    <mu-container style="padding: 0">
-      <mu-row class="d2" v-if="list.length" :style="{backgroundImage:'url(http://pde0lokle.bkt.clouddn.com/'+list[0].results[0].location.name+dayOrNight+'.jpg'}">
+    <mu-container style="padding: 0; background-color: white">
+      <mu-row class="d2" @click="back()" v-if="list.length" :style="{backgroundImage:'url(http://pde0lokle.bkt.clouddn.com/'+list[0].results[0].location.name+dayOrNight+'.jpg'}">
         <mu-col span="9">
           <div class="d3">
             {{list[0].results[0].now.text}}
@@ -26,7 +25,7 @@
         v-if="i!=0"
       >
         <div class="demo-item">
-          <mu-row class="d2" :style="{backgroundImage:'url(http://pde0lokle.bkt.clouddn.com/'+item.results[0].location.name+dayOrNight+'.jpg'}">
+          <mu-row class="d2" @click="navToFav(item.results[0].location.name)" :style="{backgroundImage:'url(http://pde0lokle.bkt.clouddn.com/'+item.results[0].location.name+dayOrNight+'.jpg'}">
             <mu-col span="9">
               <div class="d3">
                 {{item.results[0].now.text}}
@@ -46,22 +45,25 @@
           <mu-icon size="32" value="delete" style="display: block; margin: 0 auto;"></mu-icon>
         </div>
       </slip-del>
+      <mu-button icon style="float: right" @click="choose">
+        <mu-icon value="add_circle_outline"></mu-icon>
+      </mu-button>
+      <div class="divwrap" v-if="show">
+        <v-distpicker type="mobile" hide-area @province="onChangeProvince" @city="onChangeCity" @area="onChangeArea"></v-distpicker>
+      </div>
     </mu-container>
-
-    <!--<div>
-          <img src="http://pde0lokle.bkt.clouddn.com/%E6%88%90%E9%83%BD1.jpg" class="d6">
-      </div>-->
   </div>
 </template>
 
 <script>
   import SlipDel from 'vue-slip-delete'
-
+  import VDistpicker from 'v-distpicker'
   export default {
     name: "CityComponent",
-    components: {SlipDel},
+    components: {SlipDel,VDistpicker},
     data() {
       return {
+        show:false,
         list: []
       }
     },
@@ -75,9 +77,48 @@
       }
     },
     methods: {
+      navToFav(cityName) {
+        console.log(cityName);
+        localStorage.setItem("choosen",cityName)
+        this.$router.push({
+          path: '/Favourite',
+          name: 'Favourite'
+        });
+      },
+      back() {
+        this.$router.push({path: '/'});
+      },
+      choose(){
+        this.show=!this.show
+      },
+      onChangeProvince(a){
+        console.log(a)
+      },
+      onChangeCity(a){
+        console.log(a)
+        this.show=false;
+        var c;
+        if (localStorage.getItem('cityList') == null || localStorage.getItem('cityList') == undefined) {
+          c = new Array();
+        }
+        else{
+          c = JSON.parse(localStorage.getItem('cityList'));
+        }
+        var cc = a.value;
+        if (cc.substring(cc.length-2)=="城区") {
+          cc = cc.substring(0,cc.length-2)+"市";
+        }
+        c.push(cc);
+        localStorage.setItem('cityList',JSON.stringify(c));
+        this.getData();
+      },
+      onChangeArea(a){
+        console.log(a)
+      },
       getData() {
         var _this = this;
-        var cities = localStorage.getItem('currentCity');
+        var curr = localStorage.getItem('currentCity');
+        var cities = curr;
         var c = JSON.parse(localStorage.getItem('cityList'));
         //console.log(c);
         if (c!=undefined) {
@@ -155,6 +196,37 @@
     margin-left: 21.1rem;
     width: 30px;
     height: 30px;
+  }
+
+  .divwrap{
+    height: 400px;
+    overflow-y: auto;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  .divwrap>>>.distpicker-address-wrapper{
+    color: #999;
+  }
+  .divwrap>>>.address-header{
+    position: fixed;
+    bottom: 400px;
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    color:black;
+  }
+  .divwrap>>>.address-header ul li{
+    flex-grow: 1;
+    text-align: center;
+  }
+  .divwrap>>>.address-header .active{
+    color: black;
+    border-bottom:rgba(255,255,255,0.9) solid 8px
+  }
+  .divwrap>>>.address-container .active{
+    color: #000;
   }
 
 </style>

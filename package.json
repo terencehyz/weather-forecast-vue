@@ -18,7 +18,9 @@
     "v-distpicker": "^1.0.17",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue-slip-delete": "^1.0.16"
+    "vue-schart": "^1.0.0",
+    "vue-slip-delete": "^1.0.16",
+    "vue-xc-city": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

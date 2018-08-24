@@ -71,9 +71,6 @@
                     <mu-list-item button>
                       <mu-list-item-title>天气实验室</mu-list-item-title>
                     </mu-list-item>
-                    <mu-list-item button>
-                      <mu-list-item-title>视频播报</mu-list-item-title>
-                    </mu-list-item>
                     <mu-list-item button @click="share()">
                       <mu-list-item-title>分享天气</mu-list-item-title>
                     </mu-list-item>
@@ -308,6 +305,7 @@
     height: 3rem;
     width: 100%;
     background: rgba(255,255,255,0.9);
+    font-family: STXinwei;
   }
 
   .full span{
@@ -315,6 +313,6 @@
     text-align: center;
     font-size: 1.2rem;
     display: block;
-    font-family: "Adobe 仿宋 Std R";
+    font-family: STXinwei;
   }
 </style>

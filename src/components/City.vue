@@ -1,10 +1,10 @@
 <template>
-  <div class="night">
+  <div class="day">
     <mu-container style="padding: 0; background-color: white">
       <mu-row class="d2" @click="back()" v-if="list.length" :style="{backgroundImage:'url('+list[0].results[0].now.imageurl+dayOrNight+'.jpg'}">
         <mu-col span="9">
           <div class="d3">
-            {{list[0].results[0].now.text}}
+            &nbsp;{{list[0].results[0].now.text}}
           </div>
           <div class="d4">
             {{list[0].results[0].location.name}}
@@ -25,10 +25,10 @@
         v-if="i!=0"
       >
         <div class="demo-item">
-          <mu-row class="d2" @click="navToFav(item.results[0].location.name)" :style="{backgroundImage:'url(https://friendly-wilson-dbafa5.netlify.com/'+item.results[0].location.name+dayOrNight+'.jpg'}">
+          <mu-row class="d2" @click="navToFav(item.results[0].location.name)" :style="{backgroundImage:'url('+item.results[0].now.imageurl+dayOrNight+'.jpg'}">
             <mu-col span="9">
               <div class="d3">
-                {{item.results[0].now.text}}
+                &nbsp;{{item.results[0].now.text}}
               </div>
               <div class="d4">
                 {{item.results[0].location.name}}
@@ -48,22 +48,17 @@
       <mu-button icon style="float: right" @click="choose">
         <mu-icon value="add_circle_outline"></mu-icon>
       </mu-button>
-      <div class="divwrap" v-if="show">
-        <v-distpicker type="mobile" hide-area @province="onChangeProvince" @city="onChangeCity" @area="onChangeArea"></v-distpicker>
-      </div>
     </mu-container>
   </div>
 </template>
 
 <script>
   import SlipDel from 'vue-slip-delete'
-  import VDistpicker from 'v-distpicker'
   export default {
     name: "CityComponent",
-    components: {SlipDel,VDistpicker},
+    components: {SlipDel},
     data() {
       return {
-        show:false,
         list: []
       }
     },
@@ -84,6 +79,12 @@
       }
     },
     methods: {
+      choose(){
+        this.$router.push({
+          path: '/CitySelect',
+          name: 'CitySelect'
+        })
+      },
       navToFav(cityName) {
         console.log(cityName);
         localStorage.setItem("choosen",cityName)
@@ -94,33 +95,6 @@
       },
       back() {
         this.$router.push({path: '/'});
-      },
-      choose(){
-        this.show=!this.show
-      },
-      onChangeProvince(a){
-        console.log(a)
-      },
-      onChangeCity(a){
-        console.log(a)
-        this.show=false;
-        var c;
-        if (localStorage.getItem('cityList') == null || localStorage.getItem('cityList') == undefined) {
-          c = new Array();
-        }
-        else{
-          c = JSON.parse(localStorage.getItem('cityList'));
-        }
-        var cc = a.value;
-        if (cc.substring(cc.length-2)=="城区") {
-          cc = cc.substring(0,cc.length-2)+"市";
-        }
-        c.push(cc);
-        localStorage.setItem('cityList',JSON.stringify(c));
-        this.getData();
-      },
-      onChangeArea(a){
-        console.log(a)
       },
       getData() {
         var _this = this;
@@ -136,6 +110,7 @@
         var url = 'apis/getlistnowweather?locationlist='+cities;
         this.$http.get(url).then(function (res) {
           _this.list = res.data.info;
+          console.table(_this.list);
         });
       },
       slipOpen(vm) {

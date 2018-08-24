@@ -14,6 +14,7 @@ import MakeUp from '@/components/MakeUp'
 import Cal from '@/components/Cal'
 import Favourite from '@/components/Favourite'
 import Share from '@/components/Share'
+import CitySelect from '@/components/CitySelect'
 
 Vue.use(Router)
 
@@ -88,6 +89,10 @@ export default new Router({
       path:'/Share',
       name:'Share',
       component:Share
+    },{
+      path:'/CitySelect',
+      name: 'CitySelect',
+      component: CitySelect
     }
   ]
 })

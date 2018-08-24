@@ -64,12 +64,13 @@
             /**
              * 时间
              */
+            //todo
             //context.beginPath();
             context.fillStyle = '#67A7B9';
             //context.lineWidth = 10;
             context.font = 'bold 20px sans-serif'
-            context.fillText('日出 ' + this.day_begin, 30, h - 3);
-            context.fillText('日落 ' + this.day_end, w - 130, h - 3);
+            context.fillText('日出 ' + this.day_begin, 30, h -3);
+            context.fillText('日落 ' + this.day_end, w - 130, h -3);
 
             /**
              * 画虚线

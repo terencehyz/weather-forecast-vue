@@ -9,6 +9,14 @@ import 'muse-ui/dist/muse-ui.css'
 import 'typeface-roboto'
 import Loading from 'muse-ui-loading';
 import 'muse-ui-loading/dist/muse-ui-loading.css';
+
+import vueXcCity from 'vue-xc-city';
+//styles
+import 'vue-xc-city/dist/xc-city.css';
+
+Vue.use(vueXcCity);
+
+
 Vue.use(Loading);
 
 

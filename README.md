@@ -17,7 +17,7 @@
 
 ## Demo
 
-<iframe height=432 width=768 src='https://player.youku.com/embed/XMzgxMjI2MjY0OA==' frameborder=0 'allowfullscreen'></iframe>
+https://v.youku.com/v_show/id_XMzgxMjI2MjY0OA==.html
 
 ## Build Setup
 
